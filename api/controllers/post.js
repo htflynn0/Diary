@@ -41,7 +41,14 @@ async function destroy (req, res) {
 };
 
 async function update (req, res){
-
+    const id = req.params.id
+    try{
+        const post = await Post.getOneById(id)
+        const result = await post.update(req.body)
+        res.status(404).send(result)
+    } catch (err){
+        res.status(404).send({error: err.message})
+    }
 }
 
 module.exports = {
