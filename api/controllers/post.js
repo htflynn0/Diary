@@ -23,9 +23,9 @@ async function show(req, res) {
   try {
     let response;
     if (req.query.category) {
-      response = await Post.getOneByCategory(req.query.category);
+      response = await Post.getByCategory(req.query.category);
     } else if (req.query.date) {
-      response = await Post.getOneByDate(req.query.date);
+      response = await Post.getByDate(req.query.date);
     }
     res.status(200).json(response);
   } catch (err) {
@@ -55,7 +55,7 @@ async function destroy(req, res) {
 async function update(req, res) {
   const id = req.params.id;
   try {
-    const post = await Post.getOneById(id);
+    const post = await Post.getOneByTitle(title);
     const result = await post.update(req.body);
     res.status(404).send(result);
   } catch (err) {

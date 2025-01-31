@@ -13,7 +13,7 @@ class Post {
     return response.rows.map((p) => new Post(p));
   }
 
-  static async getOneByCategory(category) {
+  static async getByCategory(category) {
     const response = await db.query(
       "SELECT * FROM post WHERE LOWER(category) = LOWER($1)",
       [category]
@@ -24,7 +24,7 @@ class Post {
     return response.rows.map((cat) => new Post(cat));
   }
 
-  static async getOneByDate(date) {
+  static async getByDate(date) {
     const response = await db.query(
       "SELECT * FROM post WHERE created_at::text LIKE $1;",
       [`${date}%`]
