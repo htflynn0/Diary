@@ -35,6 +35,10 @@ class Post {
         return new Post(response.rows[0]);
     }
 
+    async update(){
+        
+    }
+
 }
 
 module.exports = Post;

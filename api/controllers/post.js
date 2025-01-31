@@ -40,6 +40,10 @@ async function destroy (req, res) {
     }
 };
 
+async function update (req, res){
+
+}
+
 module.exports = {
-    index, create, show, destroy
+    index, create, show, destroy, update
 }
