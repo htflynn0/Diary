@@ -5,6 +5,7 @@ CREATE TABLE post (
     post_id INT GENERATED ALWAYS AS IDENTITY,
     title VARCHAR (100) NOT NULL,
     content VARCHAR (500) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (post_id)
 );
 
