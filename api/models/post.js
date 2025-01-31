@@ -13,6 +13,19 @@ class Post {
     return response.rows.map((p) => new Post(p));
   }
 
+  static async getOneByTitle(title) {
+    const response = await db.query(
+      "SELECT * FROM post WHERE LOWER(title) = LOWER($1);",
+      [title]
+    );
+
+    if (response.rows.length != 1) {
+      throw new Error("Unable to find post");
+    }
+
+    return new Post(response.rows[0]);
+  }
+
   static async getByCategory(category) {
     const response = await db.query(
       "SELECT * FROM post WHERE LOWER(category) = LOWER($1)",
@@ -50,7 +63,7 @@ class Post {
 
   async destroy() {
     let response = await db.query(
-      "DELETE FROM post WHERE post_id = $1 RETURNING *;",
+      "DELETE FROM post WHERE title = $1 RETURNING *;",
       [this.id]
     );
     return new Post(response.rows[0]);

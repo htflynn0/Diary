@@ -26,25 +26,20 @@ async function show(req, res) {
       response = await Post.getByCategory(req.query.category);
     } else if (req.query.date) {
       response = await Post.getByDate(req.query.date);
+    } else if (req.params.title) {
+      response = await Post.getOneByTitle(req.params.title);
+      1;
     }
     res.status(200).json(response);
   } catch (err) {
     res.status(404).json({ error: err.message });
   }
-
-  //   try {
-  //     const id = parseInt(req.params.id);
-  //     const post = await Post.getOneById(id);
-  //     res.json(post);
-  //   } catch (err) {
-  //     res.status(404).json({ error: err.message });
-  //   }
 }
 
 async function destroy(req, res) {
   try {
-    const id = parseInt(req.params.id);
-    const post = await Post.getOneById(id);
+    const title = req.params.title;
+    const post = await Post.getOneByTitle(title);
     const result = await post.destroy();
     res.status(204).end();
   } catch (err) {
