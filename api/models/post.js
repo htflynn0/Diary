@@ -18,21 +18,32 @@ class Post {
       "SELECT * FROM post WHERE LOWER(category) = LOWER($1)",
       [category]
     );
-    if (response.rows.length != 1) {
+    if (response.rows.length <= 0) {
       throw new Error("Unable to locate posts.");
     }
     return response.rows.map((cat) => new Post(cat));
   }
 
-  static async create(data) {
-    const { title, content } = data;
-    let response = await db.query(
-      "INSERT INTO post (title, content) VALUES ($1, $2) RETURNING post_id;",
-      [title, content]
+  static async getOneByDate(date) {
+    const response = await db.query(
+      "SELECT * FROM post WHERE timestamp LIKE $1;"[`${date}%`]
     );
-    const newId = response.rows[0].post_id;
-    const newPost = await Post.getOneById(newId);
-    return newPost;
+
+    if (response.rows.length <= 0) {
+      throw new Error("Unable to find posts from this date");
+    }
+
+    return response.rows.map((post) => new Post(post));
+  }
+
+  static async create(data) {
+    const { title, content, category } = data;
+    let response = await db.query(
+      "INSERT INTO post (title, content, category) VALUES ($1, $2, $3) RETURNING *;",
+      [title, content, category]
+    );
+
+    return new Post(response.rows[0]);
   }
 
   async destroy() {

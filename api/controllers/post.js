@@ -13,25 +13,32 @@ async function create(req, res) {
   try {
     const data = req.body;
     const result = await Post.create(data);
-    res.status(201).send(result);
+    res.status(201).json(result);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
 }
 
 async function show(req, res) {
-try {
-    if 
-}
+  try {
+    let response;
+    if (req.query.category) {
+      response = await Post.getOneByCategory(req.query.category);
+    } else if (req.query.date) {
+      response = await Post.getOneByDate(req.query.date);
+    }
+    res.status(200).json(response);
+  } catch (err) {
+    res.status(404).json({ error: err.message });
+  }
 
-
-//   try {
-//     const id = parseInt(req.params.id);
-//     const post = await Post.getOneById(id);
-//     res.json(post);
-//   } catch (err) {
-//     res.status(404).json({ error: err.message });
-//   }
+  //   try {
+  //     const id = parseInt(req.params.id);
+  //     const post = await Post.getOneById(id);
+  //     res.json(post);
+  //   } catch (err) {
+  //     res.status(404).json({ error: err.message });
+  //   }
 }
 
 async function destroy(req, res) {
