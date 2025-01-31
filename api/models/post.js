@@ -26,7 +26,9 @@ class Post {
 
   static async getOneByDate(date) {
     const response = await db.query(
-      "SELECT * FROM post WHERE timestamp LIKE $1;"[`${date}%`]
+      "SELECT * FROM post WHERE created_at::text LIKE $1;",
+      [`${date}%`]
+      //convert timestable to text value to use LIKE operator
     );
 
     if (response.rows.length <= 0) {
