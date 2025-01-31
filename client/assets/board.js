@@ -40,7 +40,7 @@ document.getElementById("post-form").addEventListener("submit", async (e) => {
 async function loadPosts () {
     const options = {
         headers: {
-          Authorization: localStorage.getItem("token"),
+          authorization: localStorage.getItem("token"),
         },
       };
       

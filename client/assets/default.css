@@ -1,22 +1,102 @@
-body{
-    margin: 40px auto;
-    max-width: 650px;
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
     line-height: 1.6;
-    font-size: 18px;
-    color: #444444;
-    padding: 0 10px
 }
 
-h1,h2,h3 {
-    line-height: 1.2
-}
-
-fieldset {
-    border: none;
-}
-
+/* Container */
 .container {
-    display: flex;
-    flex-direction: column;
-    padding: 0.2rem;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+/* Form Elements */
+fieldset {
+    border: 2px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #fff;
+    transition: border 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Diary Entries */
+.entry {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: box-shadow 0.3s;
+}
+
+.entry:hover {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
 }
