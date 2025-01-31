@@ -13,14 +13,15 @@ class Post {
     return response.rows.map((p) => new Post(p));
   }
 
-  static async getOneById(id) {
-    const response = await db.query("SELECT * FROM post WHERE post_id = $1", [
-      id,
-    ]);
+  static async getOneByCategory(category) {
+    const response = await db.query(
+      "SELECT * FROM post WHERE LOWER(category) = LOWER($1)",
+      [category]
+    );
     if (response.rows.length != 1) {
-      throw new Error("Unable to locate post.");
+      throw new Error("Unable to locate posts.");
     }
-    return new Post(response.rows[0]);
+    return response.rows.map((cat) => new Post(cat));
   }
 
   static async create(data) {

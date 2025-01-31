@@ -20,13 +20,18 @@ async function create(req, res) {
 }
 
 async function show(req, res) {
-  try {
-    const id = parseInt(req.params.id);
-    const post = await Post.getOneById(id);
-    res.json(post);
-  } catch (err) {
-    res.status(404).json({ error: err.message });
-  }
+try {
+    if 
+}
+
+
+//   try {
+//     const id = parseInt(req.params.id);
+//     const post = await Post.getOneById(id);
+//     res.json(post);
+//   } catch (err) {
+//     res.status(404).json({ error: err.message });
+//   }
 }
 
 async function destroy(req, res) {
