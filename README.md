@@ -1,12 +1,17 @@
 # Instructions
 
-This folder contains a complete and working copy of the app from the **Security** workshop.
-
 In order for the app to function, it requires a `.env` file in the `api/` folder, containing four variables:
 
 ```bash
 PORT=3000
-DB_URL=[valid PostgreSQL connection string]
+DB_URL=postgresql://postgres.lpxhwkndlbvjvxtbrvns:DiaryPassApp!@aws-0-eu-west-2.pooler.supabase.com:6543/postgres
 BCRYPT_SALT_ROUNDS=10
-SECRET_TOKEN=<secret token>
+SECRET_TOKEN=A8F4F4425AF16F49D2647B01D30D9355AB867C630C7640BF2E697B591634E4C5
 ```
+## TO do:
+setup search path
+setup update path
+
+add date and time to diary entries
+
+
