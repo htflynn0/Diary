@@ -10,8 +10,9 @@ SECRET_TOKEN=A8F4F4425AF16F49D2647B01D30D9355AB867C630C7640BF2E697B591634E4C5
 ```
 ## TO do:
 setup search path
-setup update path
 
-add date and time to diary entries
+add date and time to diary entries - added but now need to display along with the secret
+
+setup frontend for update
 
 
