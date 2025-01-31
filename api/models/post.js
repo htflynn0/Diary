@@ -64,7 +64,7 @@ class Post {
   async destroy() {
     let response = await db.query(
       "DELETE FROM post WHERE title = $1 RETURNING *;",
-      [this.id]
+      [this.title]
     );
     return new Post(response.rows[0]);
   }
@@ -73,7 +73,7 @@ class Post {
     const content = data.content;
 
     const response = await db.query(
-      "UPDATE post SET content = $1 WHERE post_id = $2 RETURNING title, content",
+      "UPDATE post SET content = $1 WHERE post_id = $2 RETURNING *",
       [content, this.id]
     );
     if (response.rows.length !== 1) {

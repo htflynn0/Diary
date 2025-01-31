@@ -48,11 +48,11 @@ async function destroy(req, res) {
 }
 
 async function update(req, res) {
-  const id = req.params.id;
+  const title = req.params.title;
   try {
     const post = await Post.getOneByTitle(title);
     const result = await post.update(req.body);
-    res.status(404).send(result);
+    res.status(200).send(result);
   } catch (err) {
     res.status(404).send({ error: err.message });
   }
