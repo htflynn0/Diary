@@ -48,7 +48,7 @@ async function loadPosts () {
 
     if (response.status == 200) {
         const posts = await response.json();
-    
+        console.log(posts);
         const container = document.getElementById("posts");
 
         posts.forEach(p => {
